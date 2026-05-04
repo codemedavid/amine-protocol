@@ -11,11 +11,11 @@ const SubNav: React.FC<SubNavProps> = ({ selectedCategory, onCategoryClick }) =>
 
     if (loading) {
         return (
-            <div className="bg-white/95 backdrop-blur-xl border-b border-gray-100 hidden md:block">
+            <div className="bg-charcoal-800/95 backdrop-blur-xl border-b border-charcoal-700/50 hidden md:block">
                 <div className="container mx-auto px-4 py-4">
                     <div className="flex space-x-3 overflow-x-auto">
                         {[1, 2, 3, 4, 5].map((i) => (
-                            <div key={i} className="animate-pulse bg-gray-100 h-10 w-32 rounded-lg" />
+                            <div key={i} className="animate-pulse bg-charcoal-700 h-10 w-32 rounded-lg" />
                         ))}
                     </div>
                 </div>
@@ -24,7 +24,7 @@ const SubNav: React.FC<SubNavProps> = ({ selectedCategory, onCategoryClick }) =>
     }
 
     return (
-        <nav className="bg-white/95 backdrop-blur-xl sticky top-[64px] md:top-[80px] lg:top-[88px] z-40 border-b border-gray-100 shadow-soft">
+        <nav className="bg-charcoal-800/95 backdrop-blur-xl sticky top-[64px] md:top-[80px] lg:top-[88px] z-40 border-b border-charcoal-700/50">
             <div className="container mx-auto px-4">
                 <div className="flex items-center space-x-2 py-4 overflow-x-auto scrollbar-hide">
                     {categories.map((category) => {
@@ -38,8 +38,8 @@ const SubNav: React.FC<SubNavProps> = ({ selectedCategory, onCategoryClick }) =>
                   flex items-center space-x-2 px-5 py-2.5 rounded-lg font-bold whitespace-nowrap
                   transition-all duration-300 text-sm uppercase tracking-wider
                   ${isSelected
-                                        ? 'bg-brand-600 text-white shadow-glow'
-                                        : 'bg-white text-charcoal-500 hover:text-brand-600 hover:bg-brand-50 border border-brand-100'
+                                        ? 'bg-brand-500 text-white shadow-glow-blue'
+                                        : 'bg-charcoal-800/60 text-charcoal-400 hover:text-gold-400 hover:bg-white/5 border border-charcoal-700/50'
                                     }
                 `}
                             >
@@ -50,7 +50,6 @@ const SubNav: React.FC<SubNavProps> = ({ selectedCategory, onCategoryClick }) =>
                 </div>
             </div>
 
-            {/* Hide scrollbar for better aesthetics */}
             <style>{`
         .scrollbar-hide::-webkit-scrollbar {
           display: none;

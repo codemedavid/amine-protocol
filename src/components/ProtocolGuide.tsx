@@ -31,7 +31,7 @@ const ProtocolGuide: React.FC = () => {
         : activeProtocols.filter(p => p.category === selectedCategory);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-[#FADADD] via-[#FDF5F7] to-white">
+        <div className="min-h-screen bg-charcoal-900">
             <Header
                 cartItemsCount={cartItems.reduce((sum, item) => sum + item.quantity, 0)}
                 onCartClick={() => { }}
@@ -42,7 +42,7 @@ const ProtocolGuide: React.FC = () => {
                 {/* Back Button */}
                 <button
                     onClick={handleBackToHome}
-                    className="flex items-center gap-2 text-charcoal-600 hover:text-rose-500 transition-colors mb-6 group"
+                    className="flex items-center gap-2 text-charcoal-400 hover:text-gold-400 transition-colors mb-6 group"
                 >
                     <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                     <span className="text-sm font-medium">Back to Home</span>
@@ -50,7 +50,7 @@ const ProtocolGuide: React.FC = () => {
 
                 {/* Header */}
                 <div className="text-center mb-10">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-brand-200 shadow-soft mb-4">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-charcoal-800/60 backdrop-blur-sm border border-charcoal-700/50 shadow-soft mb-4">
                         <BookOpen className="w-4 h-4 text-rose-500" />
                         <span className="text-xs font-medium text-charcoal-700 uppercase tracking-widest">Protocol Guide</span>
                     </div>
@@ -65,7 +65,7 @@ const ProtocolGuide: React.FC = () => {
 
 
                 {/* General Guidelines */}
-                <div className="bg-white rounded-2xl shadow-soft border border-brand-100 p-6 mb-8">
+                <div className="bg-charcoal-800/60 backdrop-blur-sm rounded-2xl border border-charcoal-700/50 p-6 mb-8">
                     <h2 className="font-heading text-xl font-semibold text-charcoal-900 mb-4 flex items-center gap-2">
                         <Syringe className="w-5 h-5 text-rose-500" />
                         General Injection Guidelines
@@ -91,7 +91,7 @@ const ProtocolGuide: React.FC = () => {
                 </div>
 
                 {/* Storage Guidelines */}
-                <div className="bg-white rounded-2xl shadow-soft border border-brand-100 p-6 mb-8">
+                <div className="bg-charcoal-800/60 backdrop-blur-sm rounded-2xl border border-charcoal-700/50 p-6 mb-8">
                     <h2 className="font-heading text-xl font-semibold text-charcoal-900 mb-4 flex items-center gap-2">
                         <Thermometer className="w-5 h-5 text-rose-500" />
                         Storage Guidelines
@@ -120,7 +120,7 @@ const ProtocolGuide: React.FC = () => {
                     <select
                         value={selectedCategory}
                         onChange={(e) => setSelectedCategory(e.target.value)}
-                        className="w-full sm:w-64 px-4 py-3 rounded-xl bg-white border border-brand-200 text-charcoal-800 font-medium shadow-soft focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all cursor-pointer"
+                        className="w-full sm:w-64 px-4 py-3 rounded-xl bg-charcoal-800/80 border border-charcoal-600 text-gray-200 font-medium shadow-soft focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all cursor-pointer"
                     >
                         {categories.map((category) => (
                             <option key={category} value={category}>
@@ -136,7 +136,7 @@ const ProtocolGuide: React.FC = () => {
                         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-rose-500"></div>
                     </div>
                 ) : filteredProtocols.length === 0 ? (
-                    <div className="bg-white rounded-2xl shadow-soft border border-brand-100 p-8 text-center">
+                    <div className="bg-charcoal-800/60 backdrop-blur-sm rounded-2xl border border-charcoal-700/50 p-8 text-center">
                         <p className="text-charcoal-500">No protocols found in this category.</p>
                     </div>
                 ) : (
@@ -144,7 +144,7 @@ const ProtocolGuide: React.FC = () => {
                         {filteredProtocols.map((protocol) => (
                             <div
                                 key={protocol.id}
-                                className="bg-white rounded-2xl shadow-soft border border-brand-100 overflow-hidden"
+                                className="bg-charcoal-800/60 backdrop-blur-sm rounded-2xl border border-charcoal-700/50 overflow-hidden"
                             >
                                 <button
                                     onClick={() => toggleProtocol(protocol.id)}
@@ -183,7 +183,7 @@ const ProtocolGuide: React.FC = () => {
                                                     rel="noopener noreferrer"
                                                     className="flex items-center gap-3 p-4 bg-brand-50 rounded-xl hover:bg-brand-100 transition-colors group"
                                                 >
-                                                    <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm">
+                                                    <div className="w-12 h-12 bg-charcoal-700/50 rounded-lg flex items-center justify-center shadow-sm">
                                                         <FileText className="w-6 h-6 text-rose-500" />
                                                     </div>
                                                     <div className="flex-1">

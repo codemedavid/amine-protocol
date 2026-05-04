@@ -5,24 +5,29 @@
 @tailwind utilities;
 
 :root {
-  /* The Babe Studio - Luxury Biotech Theme */
-  --theme-bg: #FFFFFF;
-  --theme-text: #1E1E1E;
+  /* The Amine Protocol - Scientific Dark Theme */
+  --theme-bg: #0B1120;
+  --theme-text: #E2E8F0;
 
   /* Primary Palette */
-  --rose-gold: #CFA07A;
-  --deep-copper: #8C5A44;
-  --light-rose: #F4E3DA;
+  --navy-blue: #2B5797;
+  --deep-navy: #1C3D69;
+  --light-steel: #1E293B;
+
+  /* Accent */
+  --gold: #D4AF37;
+  --gold-dark: #A38221;
+  --gold-light: #F5EDD0;
 
   /* Backgrounds */
-  --cream: #FFFFFF;
-  --blush-light: #F4E3DA;
-  --warm-white: #FDFDFD;
+  --cream: #0F172A;
+  --blush-light: #1E293B;
+  --warm-white: #0F172A;
 }
 
 @layer base {
   body {
-    @apply font-sans text-charcoal-800 bg-white antialiased leading-relaxed;
+    @apply font-sans text-gray-200 bg-charcoal-900 antialiased leading-relaxed;
   }
 
   h1,
@@ -31,28 +36,51 @@
   h4,
   h5,
   h6 {
-    @apply font-heading font-semibold text-charcoal-900 tracking-tight;
+    @apply font-heading font-semibold text-white tracking-tight;
+  }
+
+  /* Custom scrollbar for dark theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0B1120;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1A2332;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2D3B4E;
   }
 }
 
 @layer components {
 
-  /* The Babe Studio Button Styles */
+  /* The Amine Protocol Button Styles */
   .btn-primary {
-    @apply bg-brand-400 text-white px-8 py-4 rounded-xl font-semibold text-sm tracking-wide transition-all duration-300 shadow-soft hover:bg-brand-500 hover:shadow-luxury active:transform active:scale-[0.98];
+    @apply relative bg-gradient-to-r from-gold-500 via-gold-400 to-gold-500 text-charcoal-900 px-8 py-4 rounded-xl font-semibold text-sm tracking-wide transition-all duration-300 shadow-glow-gold hover:shadow-lg active:transform active:scale-[0.98] overflow-hidden;
+    background-size: 200% auto;
+  }
+  .btn-primary:hover {
+    background-position: right center;
   }
 
   .btn-secondary {
-    @apply bg-transparent text-charcoal-800 border-2 border-charcoal-200 px-8 py-4 rounded-xl font-semibold text-sm transition-all duration-300 hover:bg-charcoal-50 hover:border-charcoal-800 active:transform active:scale-[0.98];
+    @apply bg-transparent text-gray-300 border border-charcoal-600 px-8 py-4 rounded-xl font-semibold text-sm transition-all duration-300 hover:bg-charcoal-700 hover:border-brand-500 hover:text-white active:transform active:scale-[0.98];
   }
 
-  /* Luxury Card Styles */
+  /* Glass Card Styles */
   .card {
-    @apply bg-white rounded-2xl shadow-soft border border-brand-300 p-6 transition-all duration-300 hover:shadow-luxury hover:border-brand-500;
+    @apply bg-charcoal-800/60 backdrop-blur-sm rounded-2xl border border-charcoal-700/50 p-6 transition-all duration-500 hover:border-brand-500/40 hover:shadow-glow-blue;
+    background: linear-gradient(135deg, rgba(17, 24, 39, 0.8), rgba(15, 23, 42, 0.6));
+  }
+  .card:hover {
+    background: linear-gradient(135deg, rgba(17, 24, 39, 0.9), rgba(15, 23, 42, 0.7));
   }
 
   .input-field {
-    @apply w-full px-4 py-3 bg-white border border-charcoal-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-400 focus:border-transparent transition-all placeholder-charcoal-400 text-charcoal-800;
+    @apply w-full px-4 py-3 bg-charcoal-800/80 border border-charcoal-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500 transition-all placeholder-charcoal-400 text-gray-200;
   }
 
   .badge {
@@ -60,11 +88,61 @@
   }
 
   .badge-primary {
-    @apply bg-brand-50 text-brand-700;
+    @apply bg-brand-900/50 text-brand-300 border border-brand-700/30;
   }
 
   .badge-accent {
-    @apply bg-charcoal-50 text-charcoal-800;
+    @apply bg-gold-900/30 text-gold-300 border border-gold-700/30;
+  }
+
+  /* Gradient text utility */
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #E0C86D, #D4AF37, #BF9A28);
+  }
+
+  .text-gradient-blue {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #7E9FCF, #3D72B5, #2B5797);
+  }
+
+  /* Glass morphism utility */
+  .glass {
+    @apply backdrop-blur-md bg-charcoal-800/40 border border-charcoal-700/30;
+  }
+
+  .glass-light {
+    @apply backdrop-blur-md bg-white/5 border border-white/10;
+  }
+
+  /* Animated gradient border */
+  .gradient-border {
+    position: relative;
+  }
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(43, 87, 151, 0.5), rgba(212, 175, 55, 0.5), rgba(43, 87, 151, 0.5));
+    background-size: 300% 300%;
+    animation: gradient-x 6s ease infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Shimmer overlay */
+  .shimmer-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2.5s linear infinite;
+    pointer-events: none;
   }
 }
 
@@ -74,7 +152,6 @@
     opacity: 0;
     transform: translateY(10px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -86,11 +163,20 @@
     opacity: 0;
     transform: translateY(20px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes gradient-x {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
 .animate-fadeIn {
@@ -99,4 +185,18 @@
 
 .animate-slideUp {
   animation: slideUp 0.5s ease-out forwards;
+}
+
+/* Hexagonal grid pattern */
+.hex-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5L52 17.5V42.5L30 55L8 42.5V17.5L30 5Z' fill='none' stroke='%232B5797' stroke-width='0.5' opacity='0.15'/%3E%3C/svg%3E");
+  background-size: 60px 60px;
+}
+
+/* Molecular grid pattern */
+.mol-pattern {
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(43, 87, 151, 0.05) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
 }

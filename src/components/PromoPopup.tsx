@@ -77,97 +77,99 @@ const PromoPopup: React.FC = () => {
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-charcoal-900/50 backdrop-blur-sm animate-fadeIn"
+        className="absolute inset-0 bg-charcoal-900/70 backdrop-blur-md animate-fadeIn"
         onClick={handleClose}
       />
 
       {/* Modal */}
-      <div className="relative bg-white rounded-2xl shadow-luxury max-w-md w-full overflow-hidden animate-slideUp">
-        {/* Close Button */}
-        <button
-          onClick={handleClose}
-          className="absolute top-4 right-4 p-1.5 text-charcoal-400 hover:text-charcoal-700 hover:bg-charcoal-50 rounded-lg transition-colors z-10"
-          aria-label="Close popup"
-        >
-          <X className="w-5 h-5" />
-        </button>
+      <div className="relative max-w-md w-full overflow-hidden animate-slideUp rounded-2xl gradient-border">
+        <div className="bg-charcoal-800/95 backdrop-blur-xl rounded-2xl shadow-luxury">
+          {/* Close Button */}
+          <button
+            onClick={handleClose}
+            className="absolute top-4 right-4 p-1.5 text-charcoal-400 hover:text-white hover:bg-white/10 rounded-lg transition-colors z-10"
+            aria-label="Close popup"
+          >
+            <X className="w-5 h-5" />
+          </button>
 
-        {/* Top Accent Bar */}
-        <div className="h-1.5 bg-gradient-to-r from-brand-700 via-brand-400 to-brand-600" />
+          {/* Top Accent Bar */}
+          <div className="h-1 bg-gradient-to-r from-brand-500 via-gold-400 to-brand-500" />
 
-        <div className="p-8 text-center">
-          {submitted ? (
-            <div className="animate-fadeIn">
-              <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="w-8 h-8 text-green-500" />
+          <div className="p-8 text-center">
+            {submitted ? (
+              <div className="animate-fadeIn">
+                <div className="w-16 h-16 bg-emerald-500/10 border border-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle className="w-8 h-8 text-emerald-400" />
+                </div>
+                <h3 className="text-xl font-heading font-bold text-white mb-2">
+                  You're on the list!
+                </h3>
+                <p className="text-charcoal-400 text-sm mb-6">
+                  We'll keep you updated with exclusive promos, new arrivals, and special offers.
+                </p>
+                <button
+                  onClick={handleClose}
+                  className="btn-primary w-full"
+                >
+                  Start Shopping
+                </button>
               </div>
-              <h3 className="text-xl font-heading font-bold text-charcoal-900 mb-2">
-                You're on the list!
-              </h3>
-              <p className="text-charcoal-500 text-sm mb-6">
-                We'll keep you updated with exclusive promos, new arrivals, and special offers.
-              </p>
-              <button
-                onClick={handleClose}
-                className="btn-primary w-full"
-              >
-                Start Shopping
-              </button>
-            </div>
-          ) : (
-            <>
-              {/* Icon */}
-              <div className="w-16 h-16 bg-brand-50 rounded-full flex items-center justify-center mx-auto mb-5">
-                <Sparkles className="w-8 h-8 text-brand-600" />
-              </div>
+            ) : (
+              <>
+                {/* Icon */}
+                <div className="w-16 h-16 bg-gold-400/10 border border-gold-400/20 rounded-full flex items-center justify-center mx-auto mb-5">
+                  <Sparkles className="w-8 h-8 text-gold-400" />
+                </div>
 
-              {/* Heading */}
-              <h3 className="text-2xl font-heading font-bold text-charcoal-900 mb-2">
-                Don't Miss Out!
-              </h3>
-              <p className="text-charcoal-500 text-sm mb-6 leading-relaxed">
-                Enter your email to receive exclusive promos, early access to new products, and special deals from The Babe Studio.
-              </p>
+                {/* Heading */}
+                <h3 className="text-2xl font-heading font-bold text-white mb-2">
+                  Don't Miss Out!
+                </h3>
+                <p className="text-charcoal-400 text-sm mb-6 leading-relaxed">
+                  Enter your email to receive exclusive promos, early access to new products, and special deals from The Amine Protocol.
+                </p>
 
-              {/* Form */}
-              <form onSubmit={handleSubmit} className="space-y-3">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => { setEmail(e.target.value); setError(''); }}
-                  placeholder="your@email.com"
-                  className="input-field text-center"
-                  autoFocus
-                />
+                {/* Form */}
+                <form onSubmit={handleSubmit} className="space-y-3">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => { setEmail(e.target.value); setError(''); }}
+                    placeholder="your@email.com"
+                    className="input-field text-center"
+                    autoFocus
+                  />
 
-                {error && (
-                  <p className="text-sm text-red-500">{error}</p>
-                )}
+                  {error && (
+                    <p className="text-sm text-red-400">{error}</p>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="btn-primary w-full flex items-center justify-center gap-2"
+                  >
+                    {submitting ? (
+                      'Subscribing...'
+                    ) : (
+                      <>
+                        <Sparkles className="w-4 h-4" />
+                        Get Exclusive Promos
+                      </>
+                    )}
+                  </button>
+                </form>
 
                 <button
-                  type="submit"
-                  disabled={submitting}
-                  className="btn-primary w-full flex items-center justify-center gap-2"
+                  onClick={handleClose}
+                  className="mt-4 text-xs text-charcoal-500 hover:text-charcoal-300 transition-colors"
                 >
-                  {submitting ? (
-                    'Subscribing...'
-                  ) : (
-                    <>
-                      <Sparkles className="w-4 h-4" />
-                      Get Exclusive Promos
-                    </>
-                  )}
+                  No thanks, maybe later
                 </button>
-              </form>
-
-              <button
-                onClick={handleClose}
-                className="mt-4 text-xs text-charcoal-400 hover:text-charcoal-600 transition-colors"
-              >
-                No thanks, maybe later
-              </button>
-            </>
-          )}
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -20,7 +20,6 @@ const PromoBanner: React.FC = () => {
     }
   }, []);
 
-  // Reset back to email form after showing confirmation
   useEffect(() => {
     if (!submitted) return;
     const timer = setTimeout(() => {
@@ -76,18 +75,23 @@ const PromoBanner: React.FC = () => {
   if (dismissed) return null;
 
   return (
-    <div className="bg-gradient-to-r from-brand-700 via-brand-600 to-brand-500 text-white relative z-40">
-      <div className="container mx-auto px-4 py-3">
+    <div className="relative bg-gradient-to-r from-brand-800 via-brand-700 to-brand-800 text-white z-40 overflow-hidden">
+      {/* Shimmer overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer" style={{ backgroundSize: '200% 100%' }} />
+      {/* Gold accent lines */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-400/30 to-transparent" />
+
+      <div className="relative container mx-auto px-4 py-3">
         <div className="flex items-center justify-center gap-3 flex-wrap">
           {submitted ? (
             <div className="flex items-center gap-2 text-sm font-medium animate-fadeIn">
-              <CheckCircle className="w-4 h-4 flex-shrink-0" />
+              <CheckCircle className="w-4 h-4 text-gold-400 flex-shrink-0" />
               <span>You're in! We'll send you exclusive promos and updates.</span>
             </div>
           ) : (
             <>
               <div className="flex items-center gap-2 text-sm font-medium">
-                <Gift className="w-4 h-4 flex-shrink-0" />
+                <Gift className="w-4 h-4 text-gold-400 flex-shrink-0" />
                 <span className="hidden sm:inline">Get exclusive promos & updates straight to your inbox!</span>
                 <span className="sm:hidden">Get exclusive promos!</span>
               </div>
@@ -98,12 +102,12 @@ const PromoBanner: React.FC = () => {
                   value={email}
                   onChange={(e) => { setEmail(e.target.value); setError(''); }}
                   placeholder="Enter your email"
-                  className="px-3 py-1.5 rounded-lg text-sm text-charcoal-800 bg-white/95 placeholder-charcoal-400 focus:outline-none focus:ring-2 focus:ring-white/50 w-48 sm:w-56"
+                  className="px-3 py-1.5 rounded-lg text-sm text-white bg-white/10 border border-white/20 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gold-400/50 focus:border-gold-400/50 w-48 sm:w-56 backdrop-blur-sm"
                 />
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="flex items-center gap-1 px-4 py-1.5 bg-white/20 hover:bg-white/30 rounded-lg text-sm font-semibold transition-colors disabled:opacity-50"
+                  className="flex items-center gap-1 px-4 py-1.5 bg-gold-500/90 hover:bg-gold-400 text-charcoal-900 rounded-lg text-sm font-bold transition-all disabled:opacity-50"
                 >
                   {submitting ? 'Joining...' : 'Join'}
                   {!submitting && <ArrowRight className="w-3.5 h-3.5" />}
@@ -111,14 +115,14 @@ const PromoBanner: React.FC = () => {
               </form>
 
               {error && (
-                <span className="text-xs text-red-200">{error}</span>
+                <span className="text-xs text-red-300">{error}</span>
               )}
             </>
           )}
 
           <button
             onClick={handleDismiss}
-            className="absolute right-3 top-1/2 -translate-y-1/2 p-1 hover:bg-white/20 rounded-lg transition-colors"
+            className="absolute right-3 top-1/2 -translate-y-1/2 p-1 hover:bg-white/10 rounded-lg transition-colors"
             aria-label="Dismiss banner"
           >
             <X className="w-4 h-4" />

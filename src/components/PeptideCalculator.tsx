@@ -77,7 +77,7 @@ const PeptideCalculator: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen bg-theme-bg font-inter flex flex-col">
+        <div className="min-h-screen bg-charcoal-900 font-inter flex flex-col">
             <Header
                 cartItemsCount={cart.getTotalItems()}
                 onCartClick={() => window.location.href = '/'}
@@ -108,7 +108,7 @@ const PeptideCalculator: React.FC = () => {
 
                     <div className="grid md:grid-cols-2 gap-8 items-start">
                         {/* Calculator Card */}
-                        <div className="bg-white rounded-2xl shadow-soft border border-gray-100 overflow-hidden">
+                        <div className="bg-charcoal-800/60 backdrop-blur-sm rounded-2xl border border-charcoal-700/50 overflow-hidden">
                             <div className="bg-navy-900 px-6 py-4 border-b border-navy-800">
                                 <h2 className="text-white font-medium flex items-center gap-2">
                                     <Calculator className="w-5 h-5 opacity-80" />
@@ -129,7 +129,7 @@ const PeptideCalculator: React.FC = () => {
                                             const syringe = SYRINGE_OPTIONS.find(s => s.id === e.target.value);
                                             if (syringe) setSelectedSyringe(syringe);
                                         }}
-                                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-1 focus:ring-navy-900 focus:border-navy-900 transition-all outline-none bg-white text-black appearance-none cursor-pointer"
+                                        className="w-full px-4 py-3 border border-charcoal-600 rounded-lg focus:ring-1 focus:ring-brand-500 focus:border-brand-500 transition-all outline-none bg-charcoal-800/80 text-gray-200 appearance-none cursor-pointer"
                                         style={{ backgroundImage: 'url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'/%3e%3c/svg%3e")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1rem center', backgroundSize: '1em' }}
                                     >
                                         {SYRINGE_OPTIONS.map((option) => (
@@ -155,7 +155,7 @@ const PeptideCalculator: React.FC = () => {
                                             placeholder="e.g. 5, 10, 15"
                                             className="w-full pl-4 pr-12 py-3 border border-gray-200 rounded-lg focus:ring-1 focus:ring-navy-900 focus:border-navy-900 transition-all outline-none text-black"
                                         />
-                                        <div className="absolute inset-y-0 right-0 flex items-center px-4 bg-gray-50 border-l border-gray-200 rounded-r-lg text-gray-500 text-sm font-medium">
+                                        <div className="absolute inset-y-0 right-0 flex items-center px-4 bg-charcoal-700/50 border-l border-charcoal-600 rounded-r-lg text-charcoal-400 text-sm font-medium">
                                             mg
                                         </div>
                                     </div>
@@ -176,7 +176,7 @@ const PeptideCalculator: React.FC = () => {
                                             placeholder="e.g. 1, 2, 3"
                                             className="w-full pl-4 pr-12 py-3 border border-gray-200 rounded-lg focus:ring-1 focus:ring-navy-900 focus:border-navy-900 transition-all outline-none text-black"
                                         />
-                                        <div className="absolute inset-y-0 right-0 flex items-center px-4 bg-gray-50 border-l border-gray-200 rounded-r-lg text-gray-500 text-sm font-medium">
+                                        <div className="absolute inset-y-0 right-0 flex items-center px-4 bg-charcoal-700/50 border-l border-charcoal-600 rounded-r-lg text-charcoal-400 text-sm font-medium">
                                             ml
                                         </div>
                                     </div>
@@ -198,7 +198,7 @@ const PeptideCalculator: React.FC = () => {
                                                 placeholder={selectedUnit === 'mg' ? 'e.g. 0.25, 0.5' : 'e.g. 250, 500'}
                                                 className="w-full pl-4 pr-16 py-3 border border-gray-200 rounded-lg focus:ring-1 focus:ring-navy-900 focus:border-navy-900 transition-all outline-none text-black"
                                             />
-                                            <div className="absolute inset-y-0 right-0 flex items-center px-4 bg-gray-50 border-l border-gray-200 rounded-r-lg text-gray-500 text-sm font-medium">
+                                            <div className="absolute inset-y-0 right-0 flex items-center px-4 bg-charcoal-700/50 border-l border-charcoal-600 rounded-r-lg text-charcoal-400 text-sm font-medium">
                                                 {selectedUnit}
                                             </div>
                                         </div>
@@ -208,7 +208,7 @@ const PeptideCalculator: React.FC = () => {
                                                 onClick={() => setSelectedUnit('mg')}
                                                 className={`px-4 py-3 border rounded-lg font-medium transition-all text-sm ${selectedUnit === 'mg'
                                                     ? 'bg-navy-900 text-white border-navy-900'
-                                                    : 'bg-white text-gray-700 border-gray-200 hover:border-navy-900'
+                                                    : 'bg-charcoal-800/80 text-charcoal-300 border-charcoal-600 hover:border-brand-500'
                                                     }`}
                                             >
                                                 mg
@@ -218,7 +218,7 @@ const PeptideCalculator: React.FC = () => {
                                                 onClick={() => setSelectedUnit('mcg')}
                                                 className={`px-4 py-3 border rounded-lg font-medium transition-all text-sm ${selectedUnit === 'mcg'
                                                     ? 'bg-navy-900 text-white border-navy-900'
-                                                    : 'bg-white text-gray-700 border-gray-200 hover:border-navy-900'
+                                                    : 'bg-charcoal-800/80 text-charcoal-300 border-charcoal-600 hover:border-brand-500'
                                                     }`}
                                             >
                                                 mcg
@@ -231,7 +231,7 @@ const PeptideCalculator: React.FC = () => {
                                 {/* Reset Button */}
                                 <button
                                     onClick={handleReset}
-                                    className="w-full py-2 text-sm text-gray-500 hover:text-navy-900 hover:bg-gray-50 rounded-lg transition-colors flex items-center justify-center gap-2"
+                                    className="w-full py-2 text-sm text-charcoal-500 hover:text-gold-400 hover:bg-white/5 rounded-lg transition-colors flex items-center justify-center gap-2"
                                 >
                                     <RotateCcw className="w-4 h-4" />
                                     Reset Calculator
@@ -240,7 +240,7 @@ const PeptideCalculator: React.FC = () => {
                         </div>
 
                         {/* Results Card */}
-                        <div className={`bg-white rounded-2xl shadow-soft border border-gray-100 overflow-hidden transition-all duration-300 ${resultUnits !== null ? 'opacity-100 translate-y-0' : 'opacity-50 translate-y-4'}`}>
+                        <div className={`bg-charcoal-800/60 backdrop-blur-sm rounded-2xl border border-charcoal-700/50 overflow-hidden transition-all duration-300 ${resultUnits !== null ? 'opacity-100 translate-y-0' : 'opacity-50 translate-y-4'}`}>
                             <div className="px-6 py-8 bg-gradient-to-r from-blue-600 to-blue-700">
                                 <div className="text-center text-white">
                                     <p className="text-5xl md:text-6xl font-black mb-2">{resultUnits || '0'}</p>
@@ -377,7 +377,7 @@ const PeptideCalculator: React.FC = () => {
                                             </svg>
                                         </div>
 
-                                        <div className="w-full bg-gray-50 rounded-xl p-4 border border-gray-100 space-y-3">
+                                        <div className="w-full bg-charcoal-900/50 rounded-xl p-4 border border-charcoal-700/50 space-y-3">
                                             <div className="flex justify-between items-center text-sm">
                                                 <span className="text-gray-500">Volume</span>
                                                 <span className="font-semibold text-gray-900">{(resultUnits / selectedSyringe.unitsPerMl).toFixed(2)} ml</span>

@@ -23,21 +23,21 @@ const Cart: React.FC<CartProps> = ({
 }) => {
   if (cartItems.length === 0) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center px-4 py-12">
+      <div className="min-h-screen bg-charcoal-900 flex items-center justify-center px-4 py-12">
         <div className="text-center max-w-md">
-          <div className="bg-white rounded-3xl p-12 border border-gray-100 shadow-clinical">
-            <div className="bg-clinical-blue w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6">
+          <div className="bg-charcoal-800/60 backdrop-blur-sm rounded-3xl p-12 border border-charcoal-700/50">
+            <div className="bg-charcoal-700/30 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6">
               <ShoppingBag className="w-10 h-10 text-charcoal-500" />
             </div>
-            <h2 className="font-heading text-2xl font-bold text-charcoal-900 mb-3 flex items-center justify-center gap-2">
+            <h2 className="font-heading text-2xl font-bold text-white mb-3 flex items-center justify-center gap-2">
               Your cart is empty
             </h2>
-            <p className="text-gray-500 mb-8 max-w-xs mx-auto">
+            <p className="text-charcoal-400 mb-8 max-w-xs mx-auto">
               Select products from our catalog to proceed with your research order.
             </p>
             <button
               onClick={onContinueShopping}
-              className="btn-primary w-full flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+              className="btn-primary w-full flex items-center justify-center gap-2"
             >
               <ArrowLeft className="w-4 h-4" />
               Browse Catalog
@@ -49,33 +49,32 @@ const Cart: React.FC<CartProps> = ({
   }
 
   const totalPrice = getTotalPrice();
-  // Shipping fee will be discussed via chat
   const finalTotal = totalPrice;
 
   return (
-    <div className="min-h-screen bg-white py-6 md:py-8">
+    <div className="min-h-screen bg-charcoal-900 py-6 md:py-8">
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Header */}
         <div className="mb-8">
           <button
             onClick={onContinueShopping}
-            className="text-gray-500 hover:text-charcoal-600 font-medium mb-6 flex items-center gap-2 transition-colors group text-sm"
+            className="text-charcoal-400 hover:text-gold-400 font-medium mb-6 flex items-center gap-2 transition-colors group text-sm"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             <span>Back to Catalog</span>
           </button>
-          <div className="flex justify-between items-end pb-4 border-b border-gray-100">
+          <div className="flex justify-between items-end pb-4 border-b border-charcoal-700/50">
             <div>
-              <h1 className="font-heading text-2xl md:text-3xl font-bold text-charcoal-900 flex items-center gap-3">
+              <h1 className="font-heading text-2xl md:text-3xl font-bold text-white flex items-center gap-3">
                 Shopping Cart
-                <span className="text-sm font-normal text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
+                <span className="text-sm font-normal text-charcoal-400 bg-charcoal-800/80 px-3 py-1 rounded-full border border-charcoal-700/50">
                   {cartItems.reduce((sum, item) => sum + item.quantity, 0)} Items
                 </span>
               </h1>
             </div>
             <button
               onClick={clearCart}
-              className="text-red-500 hover:text-red-600 text-sm font-medium flex items-center gap-2 hover:bg-red-50 px-3 py-2 rounded transition-colors"
+              className="text-red-400 hover:text-red-300 text-sm font-medium flex items-center gap-2 hover:bg-red-500/10 px-3 py-2 rounded-lg transition-colors"
             >
               <Trash2 className="w-4 h-4" />
               Clear Cart
@@ -89,11 +88,11 @@ const Cart: React.FC<CartProps> = ({
             {cartItems.map((item, index) => (
               <div
                 key={index}
-                className="bg-white rounded p-4 md:p-6 border border-gray-100 shadow-sm transition-all hover:border-charcoal-200 hover:shadow-clinical"
+                className="bg-charcoal-800/60 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-charcoal-700/50 transition-all hover:border-brand-500/30"
               >
                 <div className="flex gap-6">
                   {/* Product Image */}
-                  <div className="w-20 h-20 md:w-24 md:h-24 bg-secondary-50 rounded flex-shrink-0 border border-gray-100 overflow-hidden">
+                  <div className="w-20 h-20 md:w-24 md:h-24 bg-charcoal-900 rounded-lg flex-shrink-0 border border-charcoal-700/50 overflow-hidden">
                     {item.product.image_url ? (
                       <img
                         src={item.product.image_url}
@@ -101,7 +100,7 @@ const Cart: React.FC<CartProps> = ({
                         className="w-full h-full object-cover"
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-charcoal-200 font-bold text-2xl bg-clinical-blue/30">
+                      <div className="w-full h-full flex items-center justify-center text-charcoal-600 font-bold text-2xl">
                         {item.product.name.charAt(0)}
                       </div>
                     )}
@@ -111,27 +110,26 @@ const Cart: React.FC<CartProps> = ({
                   <div className="flex-1 min-w-0">
                     <div className="flex justify-between items-start mb-3">
                       <div>
-                        <h3 className="font-heading font-bold text-charcoal-900 text-base md:text-lg mb-1">
+                        <h3 className="font-heading font-bold text-white text-base md:text-lg mb-1">
                           {item.product.name}
                         </h3>
                         <div className="flex flex-wrap gap-2 text-xs">
                           {item.variation && (
-                            <span className="text-gray-600 font-medium bg-gray-50 px-2 py-0.5 rounded border border-gray-100">
+                            <span className="text-charcoal-300 font-medium bg-charcoal-800 px-2 py-0.5 rounded border border-charcoal-700/50">
                               Format: {item.variation.name}
                             </span>
                           )}
                           {item.product.purity_percentage && item.product.purity_percentage > 0 && (
-                            <span className="text-emerald-600 font-medium flex items-center gap-1 bg-emerald-600/10 px-2 py-0.5 rounded">
+                            <span className="text-emerald-400 font-medium flex items-center gap-1 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
                               <Sparkles className="w-3 h-3" />
                               {item.product.purity_percentage}% Purity
                             </span>
                           )}
-
                         </div>
                       </div>
                       <button
                         onClick={() => removeFromCart(index)}
-                        className="text-gray-400 hover:text-red-500 transition-colors p-1"
+                        className="text-charcoal-500 hover:text-red-400 transition-colors p-1"
                         title="Remove item"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -140,15 +138,14 @@ const Cart: React.FC<CartProps> = ({
 
                     {/* Quantity and Price */}
                     <div className="flex flex-col sm:flex-row justify-between items-end sm:items-center gap-4">
-                      {/* Qty Control */}
-                      <div className="flex items-center border border-gray-200 rounded bg-gray-50">
+                      <div className="flex items-center border border-charcoal-600 rounded-lg bg-charcoal-800">
                         <button
                           onClick={() => updateQuantity(index, item.quantity - 1)}
-                          className="p-2 hover:bg-gray-100 transition-colors rounded-l text-gray-600"
+                          className="p-2 hover:bg-charcoal-700 transition-colors rounded-l-lg text-charcoal-400"
                         >
                           <Minus className="w-3 h-3" />
                         </button>
-                        <span className="w-10 text-center font-bold text-charcoal-900 text-sm">
+                        <span className="w-10 text-center font-bold text-white text-sm">
                           {item.quantity}
                         </span>
                         <button
@@ -164,7 +161,7 @@ const Cart: React.FC<CartProps> = ({
                             const availableStock = item.variation ? item.variation.stock_quantity : item.product.stock_quantity;
                             return item.quantity >= availableStock;
                           })()}
-                          className="p-2 hover:bg-gray-100 transition-colors rounded-r text-gray-600 disabled:opacity-50"
+                          className="p-2 hover:bg-charcoal-700 transition-colors rounded-r-lg text-charcoal-400 disabled:opacity-50"
                         >
                           <Plus className="w-3 h-3" />
                         </button>
@@ -172,11 +169,9 @@ const Cart: React.FC<CartProps> = ({
 
                       <div className="text-right">
                         {(() => {
-                          // Calculate base and original price
                           const basePrice = item.variation ? item.variation.price : item.product.base_price;
                           let currentPrice = basePrice;
 
-                          // Check if this item is discounted
                           const isDiscounted = item.variation
                             ? (item.variation.discount_active && item.variation.discount_price !== null && item.variation.discount_price < basePrice)
                             : (item.product.discount_active && item.product.discount_price !== null && item.product.discount_price < item.product.base_price);
@@ -187,18 +182,18 @@ const Cart: React.FC<CartProps> = ({
 
                           return (
                             <>
-                              <div className="text-lg md:text-xl font-bold text-charcoal-900">
+                              <div className="text-lg md:text-xl font-bold text-white">
                                 ₱{(currentPrice * item.quantity).toLocaleString('en-PH', { minimumFractionDigits: 0 })}
                               </div>
                               {isDiscounted && (
-                                <div className="text-xs text-gray-400 line-through">
+                                <div className="text-xs text-charcoal-500 line-through">
                                   ₱{(basePrice * item.quantity).toLocaleString('en-PH', { minimumFractionDigits: 0 })}
                                 </div>
                               )}
-                              <div className="text-xs text-gray-400">
+                              <div className="text-xs text-charcoal-400">
                                 ₱{currentPrice.toLocaleString('en-PH', { minimumFractionDigits: 0 })} / unit
                                 {isDiscounted && (
-                                  <span className="ml-1 text-emerald-600 font-medium">
+                                  <span className="ml-1 text-emerald-400 font-medium">
                                     ({Math.round((1 - currentPrice / basePrice) * 100)}% off)
                                   </span>
                                 )}
@@ -216,40 +211,40 @@ const Cart: React.FC<CartProps> = ({
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded shadow-clinical p-6 sticky top-24 border border-gray-100">
-              <h2 className="font-heading text-lg font-bold text-charcoal-900 mb-6 flex items-center gap-2">
+            <div className="bg-charcoal-800/60 backdrop-blur-sm rounded-xl p-6 sticky top-24 border border-charcoal-700/50">
+              <h2 className="font-heading text-lg font-bold text-white mb-6 flex items-center gap-2">
                 Order Summary
-                <Activity className="w-4 h-4 text-emerald-600" />
+                <Activity className="w-4 h-4 text-gold-400" />
               </h2>
 
               <div className="space-y-3 mb-6">
-                <div className="flex justify-between text-gray-600 text-sm">
+                <div className="flex justify-between text-charcoal-400 text-sm">
                   <span>Subtotal</span>
-                  <span className="font-semibold text-charcoal-900">₱{totalPrice.toLocaleString('en-PH', { minimumFractionDigits: 0 })}</span>
+                  <span className="font-semibold text-white">₱{totalPrice.toLocaleString('en-PH', { minimumFractionDigits: 0 })}</span>
                 </div>
 
-                <div className="pt-3 border-t border-gray-100">
+                <div className="pt-3 border-t border-charcoal-700/50">
                   <div className="flex justify-between items-center mb-1">
-                    <span className="text-base font-bold text-charcoal-900">Total Estimate</span>
-                    <span className="text-2xl font-bold text-charcoal-900">
+                    <span className="text-base font-bold text-white">Total Estimate</span>
+                    <span className="text-2xl font-bold text-gradient-gold">
                       ₱{finalTotal.toLocaleString('en-PH', { minimumFractionDigits: 0 })}
                     </span>
                   </div>
-                  <p className="text-xs text-gray-400 text-right font-normal">+ Shipping calculated at checkout</p>
+                  <p className="text-xs text-charcoal-500 text-right font-normal">+ Shipping calculated at checkout</p>
                 </div>
               </div>
 
-              <div className="bg-clinical-blue/30 rounded p-4 mb-6 border border-charcoal-100">
-                <p className="text-xs text-charcoal-700 font-medium mb-2">Shipping Information:</p>
-                <ul className="text-xs text-gray-600 space-y-1">
-                  <li className="flex justify-between"><span>Metro Manila</span> <span className="font-medium">₱150</span></li>
-                  <li className="flex justify-between"><span>Provincial</span> <span className="font-medium">₱200</span></li>
+              <div className="bg-brand-900/20 rounded-lg p-4 mb-6 border border-brand-700/30">
+                <p className="text-xs text-brand-300 font-medium mb-2">Shipping Information:</p>
+                <ul className="text-xs text-charcoal-400 space-y-1">
+                  <li className="flex justify-between"><span>Metro Manila</span> <span className="font-medium text-charcoal-300">₱150</span></li>
+                  <li className="flex justify-between"><span>Provincial</span> <span className="font-medium text-charcoal-300">₱200</span></li>
                 </ul>
               </div>
 
               <button
                 onClick={onCheckout}
-                className="w-full btn-primary py-3 md:py-4 text-sm md:text-base mb-3 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+                className="w-full btn-primary py-3 md:py-4 text-sm md:text-base mb-3 flex items-center justify-center gap-2"
               >
                 <CreditCard className="w-4 h-4" />
                 Proceed to Checkout
@@ -263,19 +258,13 @@ const Cart: React.FC<CartProps> = ({
               </button>
 
               {/* Trust Badges */}
-              <div className="mt-6 pt-6 border-t border-gray-100 flex flex-col gap-2">
-                <div className="flex items-center gap-2 text-xs text-gray-500">
-                  <div className="w-4 h-4 rounded-full bg-emerald-600/10 flex items-center justify-center text-emerald-600">✓</div>
-                  <span>Secure Encrypted Checkout</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-gray-500">
-                  <div className="w-4 h-4 rounded-full bg-emerald-600/10 flex items-center justify-center text-emerald-600">✓</div>
-                  <span>HPLC Verified Purity</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-gray-500">
-                  <div className="w-4 h-4 rounded-full bg-emerald-600/10 flex items-center justify-center text-emerald-600">✓</div>
-                  <span>Discreet Packaging</span>
-                </div>
+              <div className="mt-6 pt-6 border-t border-charcoal-700/50 flex flex-col gap-2">
+                {['Secure Encrypted Checkout', 'HPLC Verified Purity', 'Discreet Packaging'].map((label, i) => (
+                  <div key={i} className="flex items-center gap-2 text-xs text-charcoal-400">
+                    <div className="w-4 h-4 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-[8px]">✓</div>
+                    <span>{label}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

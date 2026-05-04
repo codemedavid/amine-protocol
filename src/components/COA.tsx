@@ -55,7 +55,7 @@ const COA: React.FC = () => {
   // ... (after loading check)
   if (settingLoading || loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-sky-50 via-blue-50 to-cyan-50 flex items-center justify-center">
+      <div className="min-h-screen bg-charcoal-900 flex items-center justify-center">
         <div className="spinner"></div>
       </div>
     );
@@ -63,7 +63,7 @@ const COA: React.FC = () => {
 
   if (!coaPageEnabled) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-sky-50 via-blue-50 to-cyan-50 flex items-center justify-center">
+      <div className="min-h-screen bg-charcoal-900 flex items-center justify-center">
         <div className="text-center p-8">
           <Shield className="w-16 h-16 text-gray-300 mx-auto mb-4" />
           <h1 className="text-2xl font-bold text-gray-800 mb-2">Lab Reports Unavailable</h1>
@@ -77,7 +77,7 @@ const COA: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sky-50 via-blue-50 to-cyan-50">
+    <div className="min-h-screen bg-charcoal-900">
       {/* Hero Section - Mobile Optimized */}
       <div className="relative overflow-hidden bg-gradient-to-r from-sky-100 to-blue-100 py-6 md:py-12">
         <div className="absolute top-0 left-0 w-48 h-48 md:w-64 md:h-64 bg-sky-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
@@ -86,7 +86,7 @@ const COA: React.FC = () => {
         {/* Back Button */}
         <a
           href="/"
-          className="absolute top-4 left-4 z-20 flex items-center gap-2 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-full shadow-md border border-sky-200 text-gray-700 hover:text-sky-600 transition-colors"
+          className="absolute top-4 left-4 z-20 flex items-center gap-2 bg-charcoal-800/80 backdrop-blur-sm px-3 py-2 rounded-full shadow-md border border-charcoal-700/50 text-charcoal-300 hover:text-gold-400 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           <span className="text-sm font-medium">Back</span>
@@ -94,7 +94,7 @@ const COA: React.FC = () => {
 
         <div className="relative container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-1.5 md:gap-2 bg-white/90 backdrop-blur-md px-3 py-1.5 md:px-6 md:py-3 rounded-full shadow-cute mb-3 md:mb-6 border-2 border-sky-200">
+            <div className="inline-flex items-center gap-1.5 md:gap-2 bg-charcoal-800/60 backdrop-blur-md px-3 py-1.5 md:px-6 md:py-3 rounded-full shadow-cute mb-3 md:mb-6 border-2 border-charcoal-700/50">
               <Shield className="w-3.5 h-3.5 md:w-5 md:h-5 text-sky-500" />
               <span className="text-xs md:text-sm font-bold text-sky-600">Lab Verified</span>
             </div>
@@ -111,15 +111,15 @@ const COA: React.FC = () => {
             </p>
 
             <div className="flex flex-wrap justify-center gap-2 md:gap-4 text-xs md:text-sm px-2">
-              <div className="flex items-center gap-1.5 md:gap-2 bg-white/80 backdrop-blur-sm px-2.5 py-1.5 md:px-4 md:py-2 rounded-full shadow-md border border-sky-200">
+              <div className="flex items-center gap-1.5 md:gap-2 bg-charcoal-800/50 backdrop-blur-sm px-2.5 py-1.5 md:px-4 md:py-2 rounded-full shadow-md border border-charcoal-700/50">
                 <CheckCircle className="w-3.5 h-3.5 md:w-5 md:h-5 text-green-500" />
                 <span className="font-medium text-gray-700">99%+ Purity</span>
               </div>
-              <div className="flex items-center gap-1.5 md:gap-2 bg-white/80 backdrop-blur-sm px-2.5 py-1.5 md:px-4 md:py-2 rounded-full shadow-md border border-sky-200">
+              <div className="flex items-center gap-1.5 md:gap-2 bg-charcoal-800/50 backdrop-blur-sm px-2.5 py-1.5 md:px-4 md:py-2 rounded-full shadow-md border border-charcoal-700/50">
                 <Award className="w-3.5 h-3.5 md:w-5 md:h-5 text-blue-500" />
                 <span className="font-medium text-gray-700">Certified</span>
               </div>
-              <div className="flex items-center gap-1.5 md:gap-2 bg-white/80 backdrop-blur-sm px-2.5 py-1.5 md:px-4 md:py-2 rounded-full shadow-md border border-sky-200">
+              <div className="flex items-center gap-1.5 md:gap-2 bg-charcoal-800/50 backdrop-blur-sm px-2.5 py-1.5 md:px-4 md:py-2 rounded-full shadow-md border border-charcoal-700/50">
                 <Shield className="w-3.5 h-3.5 md:w-5 md:h-5 text-sky-500" />
                 <span className="font-medium text-gray-700">Verified</span>
               </div>
@@ -140,7 +140,7 @@ const COA: React.FC = () => {
             coaReports.map((report) => (
               <div
                 key={report.id}
-                className="bg-white rounded-2xl md:rounded-3xl shadow-cute hover:shadow-glow transition-all duration-300 overflow-hidden border-2 border-sky-100 hover:border-sky-200 transform hover:-translate-y-1 md:hover:-translate-y-2"
+                className="bg-white rounded-2xl md:rounded-3xl shadow-cute hover:shadow-glow transition-all duration-300 overflow-hidden border-2 border-sky-100 hover:border-charcoal-700/50 transform hover:-translate-y-1 md:hover:-translate-y-2"
               >
                 {/* Report Image - Mobile Optimized */}
                 <div
@@ -157,7 +157,7 @@ const COA: React.FC = () => {
                     }}
                   />
                   <div className="absolute inset-0 bg-sky-600/0 group-hover:bg-sky-600/10 transition-all duration-300 flex items-center justify-center">
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/95 backdrop-blur-sm px-3 py-1.5 md:px-4 md:py-2 rounded-xl md:rounded-2xl shadow-lg">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-charcoal-800/90 backdrop-blur-sm px-3 py-1.5 md:px-4 md:py-2 rounded-xl md:rounded-2xl shadow-lg">
                       <p className="text-xs md:text-sm font-bold text-sky-600 flex items-center gap-1.5 md:gap-2">
                         <ExternalLink className="w-3 h-3 md:w-4 md:h-4" />
                         View full report
@@ -251,7 +251,7 @@ const COA: React.FC = () => {
 
                     <button
                       onClick={() => setSelectedImage(report.image_url)}
-                      className="w-full flex items-center justify-center gap-1.5 md:gap-2 bg-white text-sky-600 border-2 border-sky-400 hover:border-sky-500 hover:bg-sky-50 px-3 py-2 md:px-4 md:py-3 rounded-xl md:rounded-2xl text-sm md:text-base font-medium transition-all duration-300"
+                      className="w-full flex items-center justify-center gap-1.5 md:gap-2 bg-charcoal-800/80 text-brand-400 border border-brand-500/50 hover:border-brand-400 hover:bg-brand-900/30 px-3 py-2 md:px-4 md:py-3 rounded-xl md:rounded-2xl text-sm md:text-base font-medium transition-all duration-300"
                     >
                       <Download className="w-4 h-4 md:w-5 md:h-5" />
                       View Full Report
@@ -265,7 +265,7 @@ const COA: React.FC = () => {
 
         {/* Info Section - Mobile Optimized */}
         <div className="mt-6 md:mt-12 max-w-4xl mx-auto">
-          <div className="bg-gradient-to-r from-sky-50 to-blue-50 rounded-2xl md:rounded-3xl p-4 md:p-6 lg:p-8 border-2 border-sky-200 shadow-cute">
+          <div className="bg-gradient-to-r from-sky-50 to-blue-50 rounded-2xl md:rounded-3xl p-4 md:p-6 lg:p-8 border-2 border-charcoal-700/50 shadow-cute">
             <div className="flex flex-col md:flex-row items-start gap-3 md:gap-4">
               <div className="flex-shrink-0">
                 <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-sky-400 to-blue-500 rounded-xl md:rounded-2xl flex items-center justify-center">
@@ -313,7 +313,7 @@ const COA: React.FC = () => {
           <div className="relative w-full max-w-5xl">
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute -top-10 md:-top-12 right-0 bg-white/95 hover:bg-white text-gray-800 rounded-full p-2 md:p-2.5 transition-all shadow-lg"
+              className="absolute -top-10 md:-top-12 right-0 bg-charcoal-800/95 hover:bg-charcoal-700 text-white rounded-full p-2 md:p-2.5 transition-all shadow-lg"
             >
               <X className="w-5 h-5 md:w-6 md:h-6" />
             </button>
