@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { usePostHog } from 'posthog-js/react';
 import { useCart } from './hooks/useCart';
 import Header from './components/Header';
+import AnnouncementBar from './components/AnnouncementBar';
 import PromoBanner from './components/PromoBanner';
 import PromoPopup from './components/PromoPopup';
 import SubNav from './components/SubNav';
@@ -46,7 +47,8 @@ function MainApp() {
         : menuItems.filter(item => item.category === selectedCategory);
 
     return (
-        <div className="min-h-screen bg-white font-inter flex flex-col">
+        <div className="min-h-screen bg-white flex flex-col">
+            <AnnouncementBar />
             <Header
                 cartItemsCount={cart.getTotalItems()}
                 onCartClick={() => handleViewChange('cart')}

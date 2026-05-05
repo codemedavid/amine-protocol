@@ -1,123 +1,129 @@
 import React from 'react';
-import { HelpCircle, MapPin, Truck, FlaskConical, Shield, Atom } from 'lucide-react';
+import { Phone, Mail, MapPin, FlaskConical, HelpCircle, Truck, Shield } from 'lucide-react';
+
+const trustBadges = [
+  { label: 'SSL Secured', icon: 'shield' },
+  { label: 'Secure Checkout', icon: 'lock' },
+  { label: 'Guaranteed Delivery', icon: 'truck' },
+  { label: 'COA Verified', icon: 'file' },
+];
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-charcoal-900 pt-20 pb-8 overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0 hex-pattern opacity-10" />
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-500/5 rounded-full blur-[120px]" />
-      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gold-400/3 rounded-full blur-[100px]" />
-
-      {/* Top gold gradient line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-400/30 to-transparent" />
-
-      <div className="relative z-10 container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-14">
-
-          {/* Brand Section */}
-          <div className="flex flex-col items-center md:items-start gap-5">
-            <div className="flex items-center gap-3">
-              <div className="relative">
-                <div className="absolute -inset-2 bg-brand-500/10 rounded-xl blur-md" />
-                <img
-                  src="/logo.jpeg?v=3"
-                  alt="The Amine Protocol"
-                  className="relative h-16 w-auto object-contain rounded-xl"
-                />
-              </div>
+    <footer className="w-full bg-primary-dark text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+          {/* Logo & Description */}
+          <div>
+            <a href="/" className="flex items-center gap-2 mb-4">
+              <img
+                src="/logo.jpeg?v=3"
+                alt="The Amine Protocol"
+                className="h-10 w-auto object-contain rounded-lg"
+              />
               <div>
-                <h3 className="font-heading font-bold text-gradient-gold text-lg">The Amine Protocol</h3>
-                <p className="text-[10px] tracking-[0.2em] text-charcoal-400 uppercase">Premium Peptide Science</p>
+                <p className="text-xs font-bold text-white tracking-wider leading-tight">THE AMINE</p>
+                <p className="text-xs font-bold text-white tracking-wider leading-tight">PROTOCOL</p>
               </div>
-            </div>
-            <p className="text-charcoal-400 text-sm max-w-xs text-center md:text-left leading-relaxed">
-              Quality peptides for your wellness journey. Lab-tested, high-purity formulations you can trust.
+            </a>
+            <p className="text-sm text-white/60 leading-relaxed">
+              Quality peptides for your research journey. Lab-tested, high-purity formulations you can trust.
             </p>
-            {/* Molecular formula accent */}
-            <div className="flex items-center gap-2 text-[10px] font-mono text-charcoal-500">
-              <Atom className="w-3 h-3 text-brand-500/50" />
-              <span>NH₂-R-COOH</span>
-              <span className="text-charcoal-700">|</span>
-              <span>Research Grade</span>
-            </div>
-          </div>
-
-          {/* Contact Us */}
-          <div className="flex flex-col items-center md:items-start gap-3">
-            <h3 className="text-gold-400 font-heading font-semibold text-sm uppercase tracking-wider mb-3 flex items-center gap-2">
-              <div className="w-8 h-px bg-gradient-to-r from-gold-400/50 to-transparent" />
-              Contact Us
-            </h3>
-
-            <a
-              href="mailto:babestudio259@gmail.com"
-              className="text-charcoal-300 hover:text-gold-400 transition-all flex items-center gap-3 text-sm group"
-            >
-              <div className="p-1.5 rounded-md bg-brand-500/10 border border-brand-500/20 group-hover:border-gold-400/30 transition-colors">
-                <svg className="w-3.5 h-3.5 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </div>
-              babestudio259@gmail.com
-            </a>
-
-            <a
-              href="tel:+639496133242"
-              className="text-charcoal-300 hover:text-gold-400 transition-all flex items-center gap-3 text-sm group"
-            >
-              <div className="p-1.5 rounded-md bg-brand-500/10 border border-brand-500/20 group-hover:border-gold-400/30 transition-colors">
-                <svg className="w-3.5 h-3.5 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-              </div>
-              0949 613 3242
-            </a>
-
-            <div className="text-charcoal-300 flex items-center gap-3 text-sm mt-1">
-              <div className="p-1.5 rounded-md bg-brand-500/10 border border-brand-500/20">
-                <MapPin className="w-3.5 h-3.5 text-brand-400" />
-              </div>
-              General Trias, Cavite
-            </div>
           </div>
 
           {/* Quick Links */}
-          <div className="flex flex-col items-center md:items-start gap-3">
-            <h3 className="text-gold-400 font-heading font-semibold text-sm uppercase tracking-wider mb-3 flex items-center gap-2">
-              <div className="w-8 h-px bg-gradient-to-r from-gold-400/50 to-transparent" />
-              Quick Links
-            </h3>
-            {[
-              { icon: FlaskConical, label: 'Products', href: '#' },
-              { icon: Truck, label: 'Track Order', href: '/track-order' },
-              { icon: HelpCircle, label: 'FAQ', href: '/faq' },
-              { icon: Shield, label: 'Lab Reports', href: '/coa' },
-            ].map((item, i) => (
-              <a
-                key={i}
-                href={item.href}
-                className="text-charcoal-300 hover:text-gold-400 transition-all flex items-center gap-3 text-sm group"
-              >
-                <div className="p-1.5 rounded-md bg-brand-500/10 border border-brand-500/20 group-hover:border-gold-400/30 transition-colors">
-                  <item.icon className="w-3.5 h-3.5 text-brand-400" />
-                </div>
-                {item.label}
-              </a>
-            ))}
+          <div>
+            <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Quick Links</h4>
+            <ul className="space-y-2.5">
+              {[
+                { label: 'Products', icon: FlaskConical, onClick: true },
+                { label: 'Protocols', icon: FlaskConical, href: '/protocols' },
+                { label: 'Track Order', icon: Truck, href: '/track-order' },
+                { label: 'FAQ', icon: HelpCircle, href: '/faq' },
+              ].map((link, i) => (
+                <li key={i}>
+                  <a
+                    href={link.href ?? '/'}
+                    className="text-sm text-white/60 hover:text-white transition-colors relative group flex items-center gap-2"
+                  >
+                    {link.label}
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-white transition-all duration-200 group-hover:w-full" />
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
+          {/* Legal & Resources */}
+          <div>
+            <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Resources</h4>
+            <ul className="space-y-2.5">
+              {[
+                { label: 'Lab Reports (COA)', href: '/coa' },
+                { label: 'Calculator', href: '/calculator' },
+                { label: 'Research Protocols', href: '/protocols' },
+                { label: 'FAQ', href: '/faq' },
+              ].map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-sm text-white/60 hover:text-white transition-colors relative group"
+                  >
+                    {link.label}
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-white transition-all duration-200 group-hover:w-full" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Contact</h4>
+            <ul className="space-y-3">
+              <li>
+                <a href="mailto:babestudio259@gmail.com" className="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors">
+                  <Mail className="w-4 h-4 text-secondary" />
+                  babestudio259@gmail.com
+                </a>
+              </li>
+              <li>
+                <a href="tel:+639496133242" className="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors">
+                  <Phone className="w-4 h-4 text-secondary" />
+                  0949 613 3242
+                </a>
+              </li>
+              <li>
+                <div className="flex items-center gap-2 text-sm text-white/60">
+                  <MapPin className="w-4 h-4 text-secondary" />
+                  General Trias, Cavite
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-charcoal-700 to-transparent mb-6" />
+        {/* Trust Badges */}
+        <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-10 py-8 border-t border-white/10 mb-8">
+          {trustBadges.map((badge) => (
+            <div key={badge.label} className="flex items-center gap-2 text-sm text-white/60">
+              <svg viewBox="0 0 24 24" className="w-5 h-5 text-secondary" fill="none" stroke="currentColor" strokeWidth="2">
+                {badge.icon === 'shield' && <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />}
+                {badge.icon === 'lock' && <g><rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></g>}
+                {badge.icon === 'truck' && <g><rect x="1" y="3" width="15" height="13" /><polygon points="16 8 20 8 23 11 23 16 16 16 16 8" /><circle cx="5.5" cy="18.5" r="2.5" /><circle cx="18.5" cy="18.5" r="2.5" /></g>}
+                {badge.icon === 'file' && <g><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></g>}
+              </svg>
+              {badge.label}
+            </div>
+          ))}
+        </div>
 
-        {/* Footer Bottom */}
-        <div className="text-center">
-          <p className="text-xs text-charcoal-500">
-            &copy; {currentYear} The Amine Protocol. All rights reserved.
+        {/* Copyright */}
+        <div className="text-center pt-4 border-t border-white/10">
+          <p className="text-sm text-white/40">
+            &copy; {currentYear} The Amine Protocol. All Rights Reserved.
           </p>
         </div>
       </div>

@@ -1,86 +1,92 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  /* The Amine Protocol - Scientific Dark Theme */
-  --theme-bg: #0B1120;
-  --theme-text: #E2E8F0;
-
-  /* Primary Palette */
-  --navy-blue: #2B5797;
-  --deep-navy: #1C3D69;
-  --light-steel: #1E293B;
-
-  /* Accent */
-  --gold: #D4AF37;
-  --gold-dark: #A38221;
-  --gold-light: #F5EDD0;
-
-  /* Backgrounds */
-  --cream: #0F172A;
-  --blush-light: #1E293B;
-  --warm-white: #0F172A;
-}
-
 @layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 30% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 30% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 30% 15%;
+    --primary: 220 43% 20%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 195 80% 38%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 200 50% 95%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 195 80% 38%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 195 80% 38%;
+    --radius: 0.625rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
   body {
-    @apply font-sans text-gray-200 bg-charcoal-900 antialiased leading-relaxed;
+    @apply bg-white text-primary font-sans antialiased;
+    scroll-behavior: smooth;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-heading font-semibold text-white tracking-tight;
-  }
-
-  /* Custom scrollbar for dark theme */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #0B1120;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #1A2332;
-    border-radius: 4px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #2D3B4E;
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
   }
 }
 
-@layer components {
-
-  /* The Amine Protocol Button Styles */
-  .btn-primary {
-    @apply relative bg-gradient-to-r from-gold-500 via-gold-400 to-gold-500 text-charcoal-900 px-8 py-4 rounded-xl font-semibold text-sm tracking-wide transition-all duration-300 shadow-glow-gold hover:shadow-lg active:transform active:scale-[0.98] overflow-hidden;
-    background-size: 200% auto;
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
-  .btn-primary:hover {
-    background-position: right center;
+  .bg-gradient-radial {
+    background: radial-gradient(circle at center, var(--tw-gradient-stops));
+  }
+}
+
+/* Marquee pause on hover */
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ---- Legacy admin/dark-theme utilities (kept for admin dashboard) ---- */
+@layer components {
+  .btn-primary {
+    @apply relative bg-secondary text-white px-8 py-4 rounded-xl font-semibold text-sm tracking-wide transition-all duration-300 hover:bg-secondary-dark active:scale-[0.98];
   }
 
   .btn-secondary {
-    @apply bg-transparent text-gray-300 border border-charcoal-600 px-8 py-4 rounded-xl font-semibold text-sm transition-all duration-300 hover:bg-charcoal-700 hover:border-brand-500 hover:text-white active:transform active:scale-[0.98];
+    @apply bg-transparent text-primary border border-primary/30 px-8 py-4 rounded-xl font-semibold text-sm transition-all duration-300 hover:bg-primary/5 hover:border-primary hover:text-primary active:scale-[0.98];
   }
 
-  /* Glass Card Styles */
   .card {
-    @apply bg-charcoal-800/60 backdrop-blur-sm rounded-2xl border border-charcoal-700/50 p-6 transition-all duration-500 hover:border-brand-500/40 hover:shadow-glow-blue;
-    background: linear-gradient(135deg, rgba(17, 24, 39, 0.8), rgba(15, 23, 42, 0.6));
-  }
-  .card:hover {
-    background: linear-gradient(135deg, rgba(17, 24, 39, 0.9), rgba(15, 23, 42, 0.7));
+    @apply bg-white rounded-2xl border border-gray-100 p-6 transition-all duration-300 hover:shadow-card;
   }
 
   .input-field {
-    @apply w-full px-4 py-3 bg-charcoal-800/80 border border-charcoal-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500 transition-all placeholder-charcoal-400 text-gray-200;
+    @apply w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary/30 focus:border-secondary transition-all placeholder-gray-400 text-primary;
   }
 
   .badge {
@@ -88,90 +94,42 @@
   }
 
   .badge-primary {
-    @apply bg-brand-900/50 text-brand-300 border border-brand-700/30;
+    @apply bg-accent-light text-secondary border border-accent;
   }
 
   .badge-accent {
-    @apply bg-gold-900/30 text-gold-300 border border-gold-700/30;
+    @apply bg-accent-light text-secondary border border-accent;
   }
 
-  /* Gradient text utility */
   .text-gradient-gold {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #E0C86D, #D4AF37, #BF9A28);
+    @apply text-primary;
   }
 
   .text-gradient-blue {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #7E9FCF, #3D72B5, #2B5797);
+    @apply text-secondary;
   }
 
-  /* Glass morphism utility */
   .glass {
-    @apply backdrop-blur-md bg-charcoal-800/40 border border-charcoal-700/30;
+    @apply bg-white/80 backdrop-blur-md border border-gray-100;
   }
 
   .glass-light {
-    @apply backdrop-blur-md bg-white/5 border border-white/10;
+    @apply bg-white/50 backdrop-blur-md border border-gray-100;
   }
 
-  /* Animated gradient border */
   .gradient-border {
-    position: relative;
-  }
-  .gradient-border::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(135deg, rgba(43, 87, 151, 0.5), rgba(212, 175, 55, 0.5), rgba(43, 87, 151, 0.5));
-    background-size: 300% 300%;
-    animation: gradient-x 6s ease infinite;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
+    @apply border border-gray-200;
   }
 
-  /* Shimmer overlay */
   .shimmer-overlay::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
     background-size: 200% 100%;
     animation: shimmer 2.5s linear infinite;
     pointer-events: none;
   }
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes gradient-x {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
 }
 
 @keyframes shimmer {
@@ -179,24 +137,15 @@
   100% { background-position: 200% 0; }
 }
 
-.animate-fadeIn {
-  animation: fadeIn 0.6s ease-out forwards;
-}
-
-.animate-slideUp {
-  animation: slideUp 0.5s ease-out forwards;
-}
-
-/* Hexagonal grid pattern */
+/* Hex pattern (used in some sections) */
 .hex-pattern {
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5L52 17.5V42.5L30 55L8 42.5V17.5L30 5Z' fill='none' stroke='%232B5797' stroke-width='0.5' opacity='0.15'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5L52 17.5V42.5L30 55L8 42.5V17.5L30 5Z' fill='none' stroke='%231B2A4A' stroke-width='0.5' opacity='0.08'/%3E%3C/svg%3E");
   background-size: 60px 60px;
 }
 
-/* Molecular grid pattern */
 .mol-pattern {
   background-image:
-    radial-gradient(circle at 25% 25%, rgba(43, 87, 151, 0.05) 1px, transparent 1px),
-    radial-gradient(circle at 75% 75%, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+    radial-gradient(circle at 25% 25%, rgba(27, 42, 74, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(11, 140, 184, 0.03) 1px, transparent 1px);
   background-size: 40px 40px;
 }
