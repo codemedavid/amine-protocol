@@ -1,147 +1,35 @@
-import { Suspense, lazy, useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { usePostHog } from 'posthog-js/react';
-import { useCart } from './hooks/useCart';
-import Header from './components/Header';
-import AnnouncementBar from './components/AnnouncementBar';
-import PromoBanner from './components/PromoBanner';
-import PromoPopup from './components/PromoPopup';
-import SubNav from './components/SubNav';
-import Menu from './components/Menu';
-import Cart from './components/Cart';
-import Checkout from './components/Checkout';
-import FloatingCartButton from './components/FloatingCartButton';
-import Footer from './components/Footer';
-import LoadingSpinner from './components/LoadingSpinner';
-
-// Lazy load route components
-const AdminDashboard = lazy(() => import('./components/AdminDashboard'));
-const COA = lazy(() => import('./components/COA'));
-const FAQ = lazy(() => import('./components/FAQ'));
-const PeptideCalculator = lazy(() => import('./components/PeptideCalculator'));
-const OrderTracking = lazy(() => import('./components/OrderTracking'));
-const ProtocolGuide = lazy(() => import('./components/ProtocolGuide'));
-
-import { useMenu } from './hooks/useMenu';
-// import { useCOAPageSetting } from './hooks/useCOAPageSetting';
-
-function MainApp() {
-    const cart = useCart();
-    const { menuItems, refreshProducts } = useMenu();
-    const [currentView, setCurrentView] = useState<'menu' | 'cart' | 'checkout'>('menu');
-    const [selectedCategory, setSelectedCategory] = useState<string>('all');
-
-    const handleViewChange = (view: 'menu' | 'cart' | 'checkout') => {
-        setCurrentView(view);
-        // Scroll to top when changing views
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
-
-    const handleCategoryClick = (categoryId: string) => {
-        setSelectedCategory(categoryId);
-    };
-
-    // Filter products based on selected category
-    const filteredProducts = selectedCategory === 'all'
-        ? menuItems
-        : menuItems.filter(item => item.category === selectedCategory);
-
-    return (
-        <div className="min-h-screen bg-white flex flex-col">
-            <AnnouncementBar />
-            <Header
-                cartItemsCount={cart.getTotalItems()}
-                onCartClick={() => handleViewChange('cart')}
-                onMenuClick={() => handleViewChange('menu')}
-            />
-
-            <PromoBanner />
-            <PromoPopup />
-
-            {currentView === 'menu' && (
-                <SubNav selectedCategory={selectedCategory} onCategoryClick={handleCategoryClick} />
-            )}
-
-            <main className="flex-grow">
-                {currentView === 'menu' && (
-                    <Menu
-                        menuItems={filteredProducts}
-                        addToCart={cart.addToCart}
-                        cartItems={cart.cartItems}
-                        updateQuantity={cart.updateQuantity}
-                    />
-                )}
-
-                {currentView === 'cart' && (
-                    <Cart
-                        cartItems={cart.cartItems}
-                        updateQuantity={cart.updateQuantity}
-                        removeFromCart={cart.removeFromCart}
-                        clearCart={cart.clearCart}
-                        getTotalPrice={cart.getTotalPrice}
-                        onContinueShopping={() => handleViewChange('menu')}
-                        onCheckout={() => handleViewChange('checkout')}
-                    />
-                )}
-
-                {currentView === 'checkout' && (
-                    <Checkout
-                        cartItems={cart.cartItems}
-                        totalPrice={cart.getTotalPrice()}
-                        onBack={() => handleViewChange('cart')}
-                    />
-                )}
-            </main>
-
-            {currentView === 'menu' && (
-                <>
-                    <FloatingCartButton
-                        itemCount={cart.getTotalItems()}
-                        onCartClick={() => handleViewChange('cart')}
-                    />
-                    <Footer />
-                </>
-            )}
-        </div>
-    );
-}
-
-
-function PostHogPageviewTracker() {
-    const location = useLocation();
-    const posthog = usePostHog();
-
-    useEffect(() => {
-        if (posthog) {
-            posthog.capture('$pageview', {
-                $current_url: window.location.href,
-            });
-        }
-    }, [location, posthog]);
-
-    return null;
-}
+import AnnouncementBar from './sections/AnnouncementBar'
+import Header from './sections/Header'
+import HeroSection from './sections/HeroSection'
+import GuaranteeSection from './sections/GuaranteeSection'
+import QualitySection from './sections/QualitySection'
+import WhyChooseSection from './sections/WhyChooseSection'
+import ProductGrid from './sections/ProductGrid'
+import SucceedSection from './sections/SucceedSection'
+import ProductionSection from './sections/ProductionSection'
+import ProcessSection from './sections/ProcessSection'
+import FAQSection from './sections/FAQSection'
+import Footer from './sections/Footer'
 
 function App() {
-    //   const { coaPageEnabled } = useCOAPageSetting();
-
-    return (
-        <Router>
-            <PostHogPageviewTracker />
-            <Suspense fallback={<LoadingSpinner />}>
-                <Routes>
-                    <Route path="/" element={<MainApp />} />
-                    <Route path="/coa" element={<COA />} />
-                    <Route path="/faq" element={<FAQ />} />
-                    <Route path="/calculator" element={<PeptideCalculator />} />
-                    <Route path="/track-order" element={<OrderTracking />} />
-                    <Route path="/protocols" element={<ProtocolGuide />} />
-                    {/* Peptalk routes removed */}
-                    <Route path="/admin" element={<AdminDashboard />} />
-                </Routes>
-            </Suspense>
-        </Router>
-    );
+  return (
+    <div className="min-h-screen bg-white">
+      <AnnouncementBar />
+      <Header />
+      <main>
+        <HeroSection />
+        <GuaranteeSection />
+        <QualitySection />
+        <WhyChooseSection />
+        <ProductGrid />
+        <SucceedSection />
+        <ProductionSection />
+        <ProcessSection />
+        <FAQSection />
+      </main>
+      <Footer />
+    </div>
+  )
 }
 
-export default App;
+export default App

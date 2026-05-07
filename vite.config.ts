@@ -1,31 +1,18 @@
-/// <reference types="vitest" />
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import path from "path"
+import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
+import { inspectAttr } from 'kimi-plugin-inspect-react'
 
-// https://vitejs.dev/config/
+// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  optimizeDeps: {
-    exclude: ['lucide-react'],
-  },
+  base: './',
+  plugins: [inspectAttr(), react()],
   server: {
-    proxy: {
-      '/ingest/static': {
-        target: 'https://us-assets.i.posthog.com',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/ingest/, ''),
-      },
-      '/ingest': {
-        target: 'https://us.i.posthog.com',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/ingest/, ''),
-      },
-    },
+    port: 3000,
   },
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: './src/test/setup.ts',
-    css: true,
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
   },
 });

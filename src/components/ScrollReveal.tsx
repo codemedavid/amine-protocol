@@ -37,26 +37,23 @@ export default function ScrollReveal({
     if (!ref.current) return;
     const { x, y } = getTransform();
 
-    const animation = gsap.from(ref.current, {
-      y,
-      x,
-      opacity: 0,
-      duration,
-      delay,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: ref.current,
-        start: 'top 88%',
-        toggleActions: once ? 'play none none none' : 'play reverse play reverse',
-      },
-    });
-
-    return () => {
-      animation.kill();
-      ScrollTrigger.getAll().forEach(st => {
-        if (st.trigger === ref.current) st.kill();
+    const ctx = gsap.context(() => {
+      gsap.from(ref.current, {
+        y,
+        x,
+        opacity: 0,
+        duration,
+        delay,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: ref.current,
+          start: 'top 88%',
+          toggleActions: once ? 'play none none none' : 'play reverse play reverse',
+        },
       });
-    };
+    }, ref);
+
+    return () => ctx.revert();
   }, [delay, direction, duration, once]);
 
   return (
