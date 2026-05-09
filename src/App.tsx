@@ -8,6 +8,7 @@ import ProductGrid from './sections/ProductGrid'
 import SucceedSection from './sections/SucceedSection'
 import ProductionSection from './sections/ProductionSection'
 import ProcessSection from './sections/ProcessSection'
+import AboutSection from './sections/AboutSection'
 import FAQSection from './sections/FAQSection'
 import Footer from './sections/Footer'
 
@@ -25,6 +26,7 @@ function App() {
         <SucceedSection />
         <ProductionSection />
         <ProcessSection />
+        <AboutSection />
         <FAQSection />
       </main>
       <Footer />

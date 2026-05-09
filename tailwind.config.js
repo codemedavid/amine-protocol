@@ -11,21 +11,21 @@ module.exports = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#1B2A4A",
-          dark: "#0F1A30",
-          light: "#243656",
+          DEFAULT: "#0F1A2E",
+          dark: "#060B17",
+          light: "#1F2D48",
           foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "#0B8CB8",
-          dark: "#097A9F",
-          light: "#0DA3D4",
-          foreground: "#FFFFFF",
+          DEFAULT: "#C9A961",
+          dark: "#A8893F",
+          light: "#E0C685",
+          foreground: "#0F1A2E",
         },
         accent: {
-          DEFAULT: "#D4F1F9",
-          light: "#E8F7FC",
-          foreground: "#1B2A4A",
+          DEFAULT: "#F5E9C8",
+          light: "#FAF3DD",
+          foreground: "#0F1A2E",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive) / <alpha-value>)",
@@ -68,8 +68,8 @@ module.exports = {
       },
       boxShadow: {
         xs: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
-        card: "0 4px 24px rgba(27, 42, 74, 0.08)",
-        "card-hover": "0 8px 32px rgba(27, 42, 74, 0.12)",
+        card: "0 4px 24px rgba(15, 26, 46, 0.10)",
+        "card-hover": "0 8px 32px rgba(15, 26, 46, 0.16)",
       },
       keyframes: {
         "accordion-down": {
@@ -93,8 +93,8 @@ module.exports = {
           "50%": { transform: "translateY(-10px)" },
         },
         "pulse-glow": {
-          "0%, 100%": { boxShadow: "0 0 0 0 rgba(11, 140, 184, 0.4)" },
-          "50%": { boxShadow: "0 0 20px 5px rgba(11, 140, 184, 0.2)" },
+          "0%, 100%": { boxShadow: "0 0 0 0 rgba(201, 169, 97, 0.45)" },
+          "50%": { boxShadow: "0 0 20px 5px rgba(201, 169, 97, 0.25)" },
         },
       },
       animation: {

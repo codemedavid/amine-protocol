@@ -5,7 +5,7 @@ import ScrollReveal from '@/components/ScrollReveal';
 const faqs = [
   {
     question: 'Are these peptides for human use?',
-    answer: 'No. All compounds sold by NextGen Peptides are intended strictly for laboratory research purposes only. They are not approved for human or veterinary use, consumption, or self-administration of any kind.',
+    answer: 'No. All compounds sold by TheAmineProtocolPH are intended strictly for laboratory research purposes only. They are not approved for human or veterinary use, consumption, or self-administration of any kind.',
   },
   {
     question: 'How are quality standards maintained?',

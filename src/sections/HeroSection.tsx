@@ -80,7 +80,7 @@ export default function HeroSection() {
             <div className="relative w-full max-w-lg">
               <img
                 src="/images/hero-vials.png"
-                alt="NextGen Peptide Vials"
+                alt="TheAmineProtocolPH Peptide Vials"
                 className="w-full h-auto object-contain animate-float"
               />
               {/* Feature checklist overlay */}
