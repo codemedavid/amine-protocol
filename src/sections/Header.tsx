@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 import { Search, Heart, ShoppingBag, Menu, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import { siteConfig } from '@/lib/siteContent';
 
 const navLinks = [
   { label: 'Home', href: '#' },
   { label: 'Shop', href: '#shop' },
-  { label: 'COA Library', href: '#quality' },
-  { label: 'Partner Program', href: '#process' },
+  { label: 'Peptide Calculator', href: '#peptide-calculator' },
+  { label: 'Research Catalog', href: '#research-catalog' },
+  { label: 'About Us', href: '#about' },
   { label: 'Contact', href: '#faq' },
 ];
 
@@ -33,17 +35,13 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2 shrink-0">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-              <svg viewBox="0 0 40 40" className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M20 8 C12 8 8 16 8 20 C8 24 12 32 20 32 C28 32 32 24 32 20 C32 16 28 8 20 8Z" />
-                <path d="M14 14 C14 14 16 18 20 18 C24 18 26 14 26 14" />
-                <path d="M14 26 C14 26 16 22 20 22 C24 22 26 26 26 26" />
-                <line x1="20" y1="8" x2="20" y2="32" />
-              </svg>
-            </div>
+            <img
+              src="/images/logowobckgd.png"
+              alt={siteConfig.brandName}
+              className="h-10 lg:h-12 w-auto object-contain"
+            />
             <div className="hidden sm:block">
-              <p className="text-xs font-bold text-primary tracking-wider leading-tight">NEXTGEN</p>
-              <p className="text-xs font-bold text-primary tracking-wider leading-tight">PEPTIDES</p>
+              <p className="text-sm font-bold text-primary tracking-wider leading-tight">{siteConfig.brandName}</p>
             </div>
           </a>
 
@@ -123,8 +121,7 @@ export default function Header() {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-xs font-bold text-primary tracking-wider leading-tight">NEXTGEN</p>
-                      <p className="text-xs font-bold text-primary tracking-wider leading-tight">PEPTIDES</p>
+                      <p className="text-sm font-bold text-primary tracking-wider leading-tight">{siteConfig.brandName}</p>
                     </div>
                   </div>
 

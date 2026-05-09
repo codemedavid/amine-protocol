@@ -1,4 +1,5 @@
-import { Phone, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
+import { siteConfig } from '@/lib/siteContent';
 
 const quickLinks = ['Shop', 'About', 'Contact', 'FAQ'];
 const legalLinks = ['Disclaimer', 'Privacy Policy', 'Shipping Policy', 'Terms & Conditions'];
@@ -18,17 +19,13 @@ export default function Footer() {
           {/* Logo & Description */}
           <div>
             <a href="#" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-                <svg viewBox="0 0 40 40" className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M20 8 C12 8 8 16 8 20 C8 24 12 32 20 32 C28 32 32 24 32 20 C32 16 28 8 20 8Z" />
-                  <path d="M14 14 C14 14 16 18 20 18 C24 18 26 14 26 14" />
-                  <path d="M14 26 C14 26 16 22 20 22 C24 22 26 26 26 26" />
-                  <line x1="20" y1="8" x2="20" y2="32" />
-                </svg>
-              </div>
+              <img
+                src="/images/logowobckgd.png"
+                alt={siteConfig.brandName}
+                className="h-10 w-auto object-contain"
+              />
               <div>
-                <p className="text-xs font-bold text-white tracking-wider leading-tight">NEXTGEN</p>
-                <p className="text-xs font-bold text-white tracking-wider leading-tight">PEPTIDES</p>
+                <p className="text-sm font-bold text-white tracking-wider leading-tight">{siteConfig.brandName}</p>
               </div>
             </a>
             <p className="text-sm text-white/60 leading-relaxed">
@@ -77,16 +74,9 @@ export default function Footer() {
             <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Contact</h4>
             <ul className="space-y-3">
               <li>
-                <a href="tel:+14243434462" className="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors">
-                  <Phone className="w-4 h-4 text-secondary" />
-                  +1 (424) 343-4462
-                </a>
-                <p className="text-xs text-white/40 ml-6">SMS Only: 8-5 CST</p>
-              </li>
-              <li>
-                <a href="mailto:CS@NGpeptide.com" className="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors">
-                  <Mail className="w-4 h-4 text-secondary" />
-                  CS@NGpeptide.com
+                <a href={`mailto:${siteConfig.contactEmail}`} className="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors break-all">
+                  <Mail className="w-4 h-4 text-secondary shrink-0" />
+                  {siteConfig.contactEmail}
                 </a>
               </li>
             </ul>
@@ -111,7 +101,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="text-center pt-4 border-t border-white/10">
           <p className="text-sm text-white/40">
-            @2026 Nextgen Peptides, All Rights Reserved
+            @2026 {siteConfig.brandName}, All Rights Reserved
           </p>
         </div>
       </div>

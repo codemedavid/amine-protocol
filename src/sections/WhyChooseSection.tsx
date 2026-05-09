@@ -29,7 +29,7 @@ export default function WhyChooseSection() {
         <ScrollReveal>
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-primary mb-3">
-              Why Choose NextGen Peptides
+              Why Choose TheAmineProtocolPH
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Built on controlled production standards, third-party validation, and batch-level traceability.

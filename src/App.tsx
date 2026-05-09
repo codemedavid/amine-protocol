@@ -1,35 +1,44 @@
-import AnnouncementBar from './sections/AnnouncementBar'
-import Header from './sections/Header'
-import HeroSection from './sections/HeroSection'
-import GuaranteeSection from './sections/GuaranteeSection'
-import QualitySection from './sections/QualitySection'
-import WhyChooseSection from './sections/WhyChooseSection'
-import ProductGrid from './sections/ProductGrid'
-import SucceedSection from './sections/SucceedSection'
-import ProductionSection from './sections/ProductionSection'
-import ProcessSection from './sections/ProcessSection'
-import FAQSection from './sections/FAQSection'
-import Footer from './sections/Footer'
+import { Suspense, lazy, useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router';
+import { usePostHog } from 'posthog-js/react';
+import { CartProvider } from './lib/cart-context';
+import LoadingSpinner from './components/common/LoadingSpinner';
+import Home from './pages/Home';
 
-function App() {
-  return (
-    <div className="min-h-screen bg-white">
-      <AnnouncementBar />
-      <Header />
-      <main>
-        <HeroSection />
-        <GuaranteeSection />
-        <QualitySection />
-        <WhyChooseSection />
-        <ProductGrid />
-        <SucceedSection />
-        <ProductionSection />
-        <ProcessSection />
-        <FAQSection />
-      </main>
-      <Footer />
-    </div>
-  )
+const FAQ = lazy(() => import('./pages/FAQ'));
+const COA = lazy(() => import('./pages/COA'));
+const Calculator = lazy(() => import('./pages/Calculator'));
+const OrderTracking = lazy(() => import('./pages/OrderTracking'));
+const ProtocolGuide = lazy(() => import('./pages/ProtocolGuide'));
+const Admin = lazy(() => import('./pages/Admin'));
+
+function PostHogPageviewTracker() {
+  const location = useLocation();
+  const posthog = usePostHog();
+  useEffect(() => {
+    if (!posthog) return;
+    posthog.capture('$pageview', { $current_url: window.location.href });
+  }, [location, posthog]);
+  return null;
 }
 
-export default App
+export default function App() {
+  return (
+    <>
+      <PostHogPageviewTracker />
+      <CartProvider>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/coa" element={<COA />} />
+            <Route path="/calculator" element={<Calculator />} />
+            <Route path="/track-order" element={<OrderTracking />} />
+            <Route path="/protocols" element={<ProtocolGuide />} />
+            <Route path="/admin" element={<Admin />} />
+          </Routes>
+        </Suspense>
+      </CartProvider>
+    </>
+  );
+}

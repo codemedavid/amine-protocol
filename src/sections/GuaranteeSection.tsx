@@ -53,7 +53,7 @@ export default function GuaranteeSection() {
         <div className="bg-white flex flex-col justify-center p-8 lg:p-12">
           <ScrollReveal>
             <h2 className="text-3xl lg:text-4xl font-bold text-primary mb-3">
-              The NextGen Peptides Guarantee
+              The TheAmineProtocolPH Guarantee
             </h2>
             <p className="text-muted-foreground mb-8">
               We don't compromise on quality. Every product meets the highest standards.
