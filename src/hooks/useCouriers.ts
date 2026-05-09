@@ -7,7 +7,6 @@ export interface Courier {
     code: string;
     tracking_url_template: string | null;
     is_active: boolean;
-    sort_order: number;
     created_at: string;
 }
 
@@ -21,9 +20,9 @@ export const useCouriers = () => {
 
             if (!supabase) {
                 setCouriers([
-                    { id: '00000000-0000-0000-0000-000000000001', name: 'LBC Express', code: 'lbc', tracking_url_template: 'https://www.lbcexpress.com/track/?tracking_no={tracking}', is_active: true, sort_order: 1, created_at: new Date().toISOString() },
-                    { id: '00000000-0000-0000-0000-000000000002', name: 'Lalamove', code: 'lalamove', tracking_url_template: null, is_active: true, sort_order: 2, created_at: new Date().toISOString() },
-                    { id: '00000000-0000-0000-0000-000000000003', name: 'Maxim', code: 'maxim', tracking_url_template: null, is_active: true, sort_order: 3, created_at: new Date().toISOString() },
+                    { id: '00000000-0000-0000-0000-000000000001', name: 'LBC Express', code: 'lbc', tracking_url_template: 'https://www.lbcexpress.com/track/?tracking_no={tracking}', is_active: true, created_at: new Date().toISOString() },
+                    { id: '00000000-0000-0000-0000-000000000002', name: 'Lalamove', code: 'lalamove', tracking_url_template: null, is_active: true, created_at: new Date().toISOString() },
+                    { id: '00000000-0000-0000-0000-000000000003', name: 'Maxim', code: 'maxim', tracking_url_template: null, is_active: true, created_at: new Date().toISOString() },
                 ]);
                 setLoading(false);
                 return;
@@ -32,7 +31,7 @@ export const useCouriers = () => {
             const { data, error } = await supabase
                 .from('couriers')
                 .select('*')
-                .order('sort_order', { ascending: true });
+                .order('name', { ascending: true });
 
             if (error) throw error;
             setCouriers(data || []);
@@ -40,9 +39,9 @@ export const useCouriers = () => {
             console.error('Error fetching couriers:', error);
             // Return default couriers if table doesn't exist
             setCouriers([
-                { id: '00000000-0000-0000-0000-000000000001', name: 'LBC Express', code: 'lbc', tracking_url_template: 'https://www.lbcexpress.com/track/?tracking_no={tracking}', is_active: true, sort_order: 1, created_at: new Date().toISOString() },
-                { id: '00000000-0000-0000-0000-000000000002', name: 'Lalamove', code: 'lalamove', tracking_url_template: null, is_active: true, sort_order: 2, created_at: new Date().toISOString() },
-                { id: '00000000-0000-0000-0000-000000000003', name: 'Maxim', code: 'maxim', tracking_url_template: null, is_active: true, sort_order: 3, created_at: new Date().toISOString() },
+                { id: '00000000-0000-0000-0000-000000000001', name: 'LBC Express', code: 'lbc', tracking_url_template: 'https://www.lbcexpress.com/track/?tracking_no={tracking}', is_active: true, created_at: new Date().toISOString() },
+                { id: '00000000-0000-0000-0000-000000000002', name: 'Lalamove', code: 'lalamove', tracking_url_template: null, is_active: true, created_at: new Date().toISOString() },
+                { id: '00000000-0000-0000-0000-000000000003', name: 'Maxim', code: 'maxim', tracking_url_template: null, is_active: true, created_at: new Date().toISOString() },
             ]);
         } finally {
             setLoading(false);

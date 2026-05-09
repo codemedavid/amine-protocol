@@ -16,13 +16,33 @@ export default function AboutSection() {
           </div>
         </ScrollReveal>
 
-        <ScrollReveal>
-          <div className="space-y-5 text-muted-foreground leading-relaxed text-base lg:text-lg">
-            {aboutContent.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
-          </div>
-        </ScrollReveal>
+        <div className="space-y-14">
+          {aboutContent.sections.map((section, si) => (
+            <ScrollReveal key={si}>
+              <div>
+                <h3 className="text-xl lg:text-2xl font-bold text-primary mb-5">
+                  {section.heading}
+                </h3>
+                <div className="space-y-5 text-muted-foreground leading-relaxed text-base lg:text-lg">
+                  {section.paragraphs.map((p, pi) => (
+                    <p key={pi}>{p}</p>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+          ))}
+
+          <ScrollReveal>
+            <div className="w-full aspect-video rounded-xl overflow-hidden shadow-lg">
+              <iframe
+                src="https://drive.google.com/file/d/12Ml1N1a_JeQrsxQ3M5ez4Sg2gzQN5gKA/preview"
+                className="w-full h-full"
+                allow="autoplay"
+                allowFullScreen
+              />
+            </div>
+          </ScrollReveal>
+        </div>
       </div>
     </section>
   );

@@ -8,6 +8,9 @@ import Home from './pages/Home';
 const FAQ = lazy(() => import('./pages/FAQ'));
 const COA = lazy(() => import('./pages/COA'));
 const Calculator = lazy(() => import('./pages/Calculator'));
+const ResearchCatalog = lazy(() => import('./pages/ResearchCatalog'));
+const CartPage = lazy(() => import('./pages/CartPage'));
+const CheckoutPage = lazy(() => import('./pages/CheckoutPage'));
 const OrderTracking = lazy(() => import('./pages/OrderTracking'));
 const ProtocolGuide = lazy(() => import('./pages/ProtocolGuide'));
 const Admin = lazy(() => import('./pages/Admin'));
@@ -33,6 +36,9 @@ export default function App() {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/coa" element={<COA />} />
             <Route path="/calculator" element={<Calculator />} />
+            <Route path="/catalog" element={<ResearchCatalog />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/track-order" element={<OrderTracking />} />
             <Route path="/protocols" element={<ProtocolGuide />} />
             <Route path="/admin" element={<Admin />} />

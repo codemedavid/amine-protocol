@@ -176,9 +176,9 @@ export const useCategories = () => {
 
     if (!supabase) return;
 
-    // Real-time subscription handles live updates — no need for focus refetch
+    const channelName = `categories-changes-${Math.random().toString(36).slice(2)}`;
     const categoriesChannel = supabase
-      .channel('categories-changes')
+      .channel(channelName)
       .on(
         'postgres_changes',
         { event: '*', schema: 'public', table: 'categories' },

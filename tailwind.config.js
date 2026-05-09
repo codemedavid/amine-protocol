@@ -5,6 +5,28 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        navy: {
+          700: '#1F3460',
+          800: '#162549',
+          900: '#0F1A2E',
+        },
+        charcoal: {
+          800: '#2a2a2a',
+          900: '#1a1a1a',
+        },
+        gold: {
+          100: '#FAF3DD',
+          200: '#F5E9C8',
+          300: '#EDD98A',
+          400: '#DFC470',
+          500: '#D4B96E',
+          600: '#C9A961',
+          700: '#A8893F',
+        },
+        brand: {
+          400: '#C9A961',
+          500: '#A8893F',
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -70,6 +92,7 @@ module.exports = {
         xs: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
         card: "0 4px 24px rgba(15, 26, 46, 0.10)",
         "card-hover": "0 8px 32px rgba(15, 26, 46, 0.16)",
+        "gold-glow": "0 0 12px 2px rgba(201, 169, 97, 0.35)",
       },
       keyframes: {
         "accordion-down": {

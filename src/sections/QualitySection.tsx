@@ -122,7 +122,7 @@ export default function QualitySection() {
                 </div>
                 {/* See Proof Link */}
                 <a
-                  href="#"
+                  href="/coa"
                   className="absolute bottom-6 left-6 right-6 bg-white rounded-lg px-4 py-3 shadow-card flex items-center justify-between group hover:shadow-card-hover transition-shadow"
                 >
                   <span className="flex items-center gap-2 text-sm font-medium text-primary">

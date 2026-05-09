@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Plus, Edit, Trash2, Save, X, ArrowLeft, TrendingUp, Package, Users, FolderOpen, CreditCard, Sparkles, Layers, Shield, RefreshCw, Warehouse, ShoppingCart, HelpCircle, MapPin, Tag, Truck } from 'lucide-react';
-import type { Product } from '../types';
-import { useMenu } from '../hooks/useMenu';
-import { useCategories } from '../hooks/useCategories';
-import { useProtocols } from '../hooks/useProtocols';
-import { generateProtocolFromTemplate } from '../lib/protocolTemplates';
+import type { Product } from '../../types';
+import { useMenu } from '../../hooks/useMenu';
+import { useCategories } from '../../hooks/useCategories';
+import { useProtocols } from '../../hooks/useProtocols';
+import { generateProtocolFromTemplate } from '../../lib/protocolTemplates';
 import ImageUpload from './ImageUpload';
 import CategoryManager from './CategoryManager';
 import PaymentMethodManager from './PaymentMethodManager';
@@ -34,7 +34,7 @@ const AdminDashboard: React.FC = () => {
   const [managingVariationsProductId, setManagingVariationsProductId] = useState<string | null>(null);
   const [selectedProducts, setSelectedProducts] = useState<Set<string>>(new Set());
   const [isRefreshing, setIsRefreshing] = useState(false);
-  const { addProtocol, protocols } = useProtocols();
+  const { addProtocol } = useProtocols();
 
   const variationManagerProduct = managingVariationsProductId
     ? products.find((product) => product.id === managingVariationsProductId) || null
@@ -413,7 +413,7 @@ const AdminDashboard: React.FC = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === 'AmineProtocol@Admin!2026') {
+    if (password === 'thebabestudio@Admin!123') {
       setIsAuthenticated(true);
       localStorage.setItem('peptide_admin_auth', 'true');
       setLoginError('');
