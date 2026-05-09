@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router';
 import { usePostHog } from 'posthog-js/react';
+import { CartProvider } from './lib/cart-context';
 import LoadingSpinner from './components/common/LoadingSpinner';
 import Home from './pages/Home';
 
@@ -25,17 +26,19 @@ export default function App() {
   return (
     <>
       <PostHogPageviewTracker />
-      <Suspense fallback={<LoadingSpinner />}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/coa" element={<COA />} />
-          <Route path="/calculator" element={<Calculator />} />
-          <Route path="/track-order" element={<OrderTracking />} />
-          <Route path="/protocols" element={<ProtocolGuide />} />
-          <Route path="/admin" element={<Admin />} />
-        </Routes>
-      </Suspense>
+      <CartProvider>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/coa" element={<COA />} />
+            <Route path="/calculator" element={<Calculator />} />
+            <Route path="/track-order" element={<OrderTracking />} />
+            <Route path="/protocols" element={<ProtocolGuide />} />
+            <Route path="/admin" element={<Admin />} />
+          </Routes>
+        </Suspense>
+      </CartProvider>
     </>
   );
 }
