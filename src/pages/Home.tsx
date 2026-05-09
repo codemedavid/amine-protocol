@@ -6,7 +6,6 @@ import QualitySection from '../sections/QualitySection';
 import WhyChooseSection from '../sections/WhyChooseSection';
 import ProductGrid from '../sections/ProductGrid';
 import SucceedSection from '../sections/SucceedSection';
-import ProductionSection from '../sections/ProductionSection';
 import ProcessSection from '../sections/ProcessSection';
 import AboutSection from '../sections/AboutSection';
 import FAQSection from '../sections/FAQSection';
